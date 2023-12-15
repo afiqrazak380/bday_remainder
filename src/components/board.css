@@ -10,7 +10,7 @@ body {
   --color-dark: #343a40;
   --color-light: #f5f3f4;
   --panelColor: #ffe66d;
-  --active: #06d6a0;
+  --active: #d874748c;
 }
 
 #site-main {
@@ -41,23 +41,26 @@ ul {
 ul > li .flex {
   color: var(--color-dark);
   display: flex;
+  /* flex-direction:  */
   justify-content: center;
   align-items: center;
   gap: 2em;
   margin-top: 1em;
-  text-align: left;
+
   background-color: var(--active);
   padding: 0.8em 0;
   border-radius: 10px;
   box-shadow: 10px 10px 20px #fd260059;
-  border: none;
 }
 
 ul > li img {
   border-radius: 50%;
   width: 20%;
+  max-width: 70%;
+  margin-bottom: 1em;
 }
 
 .upcoming {
   margin-top: 1em;
+  text-align: center;
 }
