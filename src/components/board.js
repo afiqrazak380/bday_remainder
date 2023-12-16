@@ -6,17 +6,17 @@ const Info = [
   {
     img: 'https://th.bing.com/th/id/R.46e729c5f6eb0ebd0c78a4591540ce27?rik=TYXB0b8M0pQ2Aw&pid=ImgRaw&r=0',
     name: 'Snoop Dog',
-    birthday: '1995-12-15',
+    birthday: '1995-12-16',
   },
   {
     img: 'https://th.bing.com/th/id/OIP.tObrUVNH38SbxH4jl80_vgHaLH?rs=1&pid=ImgDetMain',
     name: 'Slim Shady',
-    birthday: '1998-01-29',
+    birthday: '1998-11-29',
   },
   {
     img: 'https://i.pinimg.com/736x/59/f5/af/59f5af016697b79960a059339c64b9b7.jpg',
     name: 'Tupac Shakur',
-    birthday: '1991-02-02',
+    birthday: '1991-10-02',
   },
   {
     img: 'https://th.bing.com/th/id/OIP.SrdwLxcGKIf87zYxhI2f2wHaKe?w=751&h=1063&rs=1&pid=ImgDetMain',
@@ -41,7 +41,7 @@ export default function board() {
       <h1 className='text-dark title'>Birthday Remainder</h1>
       <div className='board'>
         <List info={Today(Info)}></List>
-        <h2 className='upcoming text-dark'>Upcoming</h2>
+        <h2 className='upcoming text-dark'>Passed</h2>
         <List info={Upcoming(Info)}></List>
       </div>
     </main>
@@ -56,7 +56,6 @@ function Today(person) {
   let filter = person.filter((data) => {
     let day = new Date(data.birthday).getDate();
     let month = new Date(data.birthday).getMonth();
-    console.log(month);
     return currentDay == day && currentMonth == month;
   });
 
@@ -66,10 +65,14 @@ function Today(person) {
 //Upcoming birthday
 function Upcoming(person) {
   let currentMonth = new Date().getMonth();
+  let currentDay = new Date().getDate();
 
   let filter = person.filter((data) => {
-    let month = new Date(data.birthday).getMonth();
-    return month >= currentMonth && month <= currentMonth + 1;
+    let monthBday = new Date(data.birthday).getMonth();
+    let dayBday = new Date(data.birthday).getDate();
+
+    if (dayBday == currentDay) return;
+    return monthBday <= currentMonth && monthBday >= currentMonth - 2;
   });
 
   return filter;
